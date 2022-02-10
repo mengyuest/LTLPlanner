@@ -1,0 +1,19 @@
+TODO Feb 10
+
+Installed ltl2ba (https://github.com/PatrickTrentin88/gltl2ba)
+
+sudo apt-get install graphviz
+
+add following commands in ~/.bashrc
+
+export PATH=${PATH}:/home/meng/mit/LTLPlanner/ltl2ba/ltl2ba-1.3
+export PATH=${PATH}:/home/meng/mit/LTLPlanner/ltl2ba/gltl2ba-master
+
+compile the ltl2ba
+
+TODO run with
+gltl2ba -f "([] p0) || (<> p1)" -t -g
+
+(-f formula)
+(-g graph pdf)
+(-t print in terminal)

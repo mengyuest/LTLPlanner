@@ -34,7 +34,8 @@ def test():
     b1 = np.array([1.0, -0.5, -0.5, 1], dtype=np.float64)
     B1 = (A, b1)
     # b2 = np.array([-0, 1, -0, 1], dtype=np.float64)
-    b2 = np.array([-0.5, 1, -0.5, 1], dtype=np.float64)
+    # b2 = np.array([-0.5, 1, -0.5, 1], dtype=np.float64)
+    b2 = np.array([0., 0.5, -0.5, 1], dtype=np.float64)
     B2 = (A, b2)
     # b3 = np.array([-0, 1, 1, 0], dtype = np.float64)
     b3 = np.array([-0.5, 1, 1, -0.5], dtype=np.float64)
@@ -146,12 +147,14 @@ def def_spec5(B1, B2, B3, C, info):
 
 # G (F (house) & F (pear))
 def def_spec6(B1, B2, B3, C, info):
+    info1 = {'int': [info['int'][1]//3, 2*info['int'][1]//3]}
+
     inB2 = Node('mu', info={'A': B2[0], 'b': B2[1]})
     inB3 = Node('mu', info={'A': B3[0], 'b': B3[1]})
     FinB2 = Node('F', deps=[inB2], info=info)
     FinB3 = Node('F', deps=[inB3], info=info)
     FinB2_and_B3 = Node('and', deps=[FinB2, FinB3])
-    spec = Node('A', deps=[FinB2_and_B3], info=info)
+    spec = Node('A', deps=[FinB2_and_B3], info=info1)
     return spec
 
 
